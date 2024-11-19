@@ -1,0 +1,30 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Task Manager{% endblock %}</title>
+    {% bootstrap_css %}
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+{% block bootstrap5_content %}
+<h1 class="my-4"></h1>
+<div class="card">
+  <div class="card-body p-5 bg-light">
+    <div class="display-4">Привет от Хекслета!</div>
+    <p class="lead">Практические курсы по программированию</p>
+    <hr>
+    <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">Узнать больше</a>
+  </div>
+</div>
+{% endblock %}
+
+{% bootstrap_javascript %}
+</body>
+</html>
