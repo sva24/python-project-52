@@ -1,11 +1,12 @@
+{% load i18n %}
 {% load django_bootstrap5 %}
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Task Manager{% endblock %}</title>
+    <title>{% block title %} {% translate "Task Manager"  %}{% endblock %}</title>
     {% bootstrap_css %}
 
 </head>
@@ -17,10 +18,10 @@
 <h1 class="my-4"></h1>
 <div class="card">
   <div class="card-body p-5 bg-light">
-    <div class="display-4">Привет от Хекслета!</div>
-    <p class="lead">Практические курсы по программированию</p>
+    <div class="display-4">{% translate "Greetings from Hexlet!" %}</div>
+    <p class="lead">{% translate "Practical programming courses" %}</p>
     <hr>
-    <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">Узнать больше</a>
+    <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">{% translate "Find out more" %}</a>
   </div>
 </div>
 {% endblock %}
