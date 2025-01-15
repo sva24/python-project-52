@@ -9,3 +9,7 @@ run:
 
 dev:
 	poetry run python manage.py runserver
+translate:
+	 poetry run django-admin makemessages -l ru
+build_translate:
+	poetry run django-admin compilemessages
