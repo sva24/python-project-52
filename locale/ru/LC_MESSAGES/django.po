@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 12:31+0700\n"
+"POT-Creation-Date: 2025-01-15 19:54+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,13 +28,61 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 msgid "You do not have permission to change another user."
 msgstr "У вас нет разрешения на изменение другого пользователя"
 
-#: task_manager/settings.py:147
+#: task_manager/settings.py:142
 msgid "English"
 msgstr ""
 
-#: task_manager/settings.py:148
+#: task_manager/settings.py:143
 msgid "Russian"
 msgstr ""
+
+#: task_manager/statuses/templates/confirm_delete.html:8
+msgid "Delete status"
+msgstr "Удалить статус"
+
+#: task_manager/statuses/templates/confirm_delete.html:11
+#: task_manager/users/templates/confirm_delete.html:11
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: task_manager/statuses/templates/confirm_delete.html:13
+#: task_manager/users/templates/confirm_delete.html:13
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: task_manager/statuses/templates/create.html:9
+#: task_manager/statuses/templates/show_statuses.html:11
+msgid "Create status"
+msgstr "Создать статус"
+
+#: task_manager/statuses/templates/create.html:15
+msgid "Create"
+msgstr "Создать"
+
+#: task_manager/statuses/templates/show_statuses.html:5
+#: task_manager/statuses/templates/show_statuses.html:9
+#: task_manager/templates/navbar.html:14
+msgid "Statuses"
+msgstr "Статусы"
+
+#: task_manager/statuses/templates/show_statuses.html:17
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/statuses/templates/show_statuses.html:18
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: task_manager/statuses/templates/show_statuses.html:29
+#: task_manager/users/templates/show_users.html:28
+#: task_manager/users/templates/update.html:16
+msgid "Update"
+msgstr "Изменить"
+
+#: task_manager/statuses/templates/show_statuses.html:30
+#: task_manager/users/templates/show_users.html:29
+msgid "Delete"
+msgstr "Удалить"
 
 #: task_manager/templates/greeting.html:11
 msgid "Greetings from Hexlet!"
@@ -77,41 +125,23 @@ msgstr "Регистрация"
 msgid "Deleting a user"
 msgstr "Удаление пользователя"
 
-#: task_manager/users/templates/confirm_delete.html:11
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: task_manager/users/templates/confirm_delete.html:13
-msgid "Yes, delete"
-msgstr "Да, удалить"
-
-#: task_manager/users/templates/show_users.html:28
-#: task_manager/users/templates/update.html:17
-msgid "Update"
-msgstr "Изменить"
-
-#: task_manager/users/templates/show_users.html:29
-msgid "Delete"
-msgstr "Удалить"
-
 #: task_manager/users/templates/signup.html:17
 msgid "Register"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/templates/update.html:11
+#: task_manager/users/templates/update.html:10
 msgid "Update user"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/views.py:35
+#: task_manager/users/views.py:36
 msgid "User was updated successfully"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:45
+#: task_manager/users/views.py:46
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
 
 #: task_manager/views.py:19
-#| msgid "You are not logged in! Please sign in."
 msgid "You are logged in"
 msgstr "Вы залогинены"
 

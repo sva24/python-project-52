@@ -30,3 +30,15 @@ class PermissionCheckMixin:
             return redirect('users')
 
         return super().dispatch(request, *args, **kwargs)
+
+
+class TemplateContextMixin:
+    page_title = ""
+    submit_button_text = ""
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = self.page_title
+        context['submit_button_text'] = self.submit_button_text
+        return context
