@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import get_object_or_404
 from .users.models import CustomUser
-from django.core.exceptions import PermissionDenied
+from .tasks.models import Task
 
 
 class LoginCheckMixin(LoginRequiredMixin):
@@ -37,8 +37,25 @@ class TemplateContextMixin:
     submit_button_text = ""
 
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
         context['page_title'] = self.page_title
         context['submit_button_text'] = self.submit_button_text
         return context
+
+
+class TaskOwnerCheckMixin:
+
+    owner_field = None
+
+    def get_permission_message(self):
+        return _('A task can only be deleted by its author')
+
+    def dispatch(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        owner = getattr(task, self.owner_field)
+
+        if owner != request.user:
+            messages.error(request, self.get_permission_message())
+            return redirect('tasks')
+
+        return super().dispatch(request, *args, **kwargs)
