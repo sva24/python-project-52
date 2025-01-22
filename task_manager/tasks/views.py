@@ -14,7 +14,6 @@ class TaskListView(ListView):
     model = Task
     template_name = 'show_tasks.html'
     context_object_name = 'tasks'
-    paginate_by = 10
 
     def get_queryset(self):
         queryset = Task.objects.all()
@@ -43,7 +42,7 @@ class TaskCreateView(LoginCheckMixin,
                      TemplateContextMixin,
                      CreateView):
     model = Task
-    fields = ['name', 'description', 'status', 'executor']
+    fields = ['name', 'description', 'status', 'executor',  'labels']
     template_name = 'create_task.html'
     success_url = reverse_lazy('tasks')
     page_title = _("Create task")
@@ -58,7 +57,7 @@ class TaskUpdateView(LoginCheckMixin,
                      TemplateContextMixin,
                      UpdateView):
     model = Task
-    fields = ['name', 'description', 'status', 'executor']
+    fields = ['name', 'description', 'status', 'executor', 'labels']
     template_name = 'create_task.html'
     success_url = reverse_lazy('tasks')
     page_title = _("Update task")
