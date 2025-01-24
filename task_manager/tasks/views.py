@@ -1,44 +1,27 @@
-from django.contrib.auth import get_user_model
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from task_manager.mixins import LoginCheckMixin, TemplateContextMixin, TaskOwnerCheckMixin
 from .models import Task
-from task_manager.statuses.models import Status
 from django.utils.translation import gettext_lazy as _
+from django_filters.views import FilterView
+from .filters import TaskFilter
 
 
 # Create your views here.
 
-
-class TaskListView(ListView):
+class TaskListView(FilterView):
     model = Task
     template_name = 'show_tasks.html'
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
 
     def get_queryset(self):
-        queryset = Task.objects.all()
-
-        status_filter = self.request.GET.get('status')
-        if status_filter:
-            queryset = queryset.filter(status__id=status_filter)
-
-        executor_filter = self.request.GET.get('executor')
-        if executor_filter:
-            queryset = queryset.filter(executor__id=executor_filter)
-
-        if self.request.GET.get('self_tasks'):
-            queryset = queryset.filter(created_by=self.request.user)
-
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['statuses'] = Status.objects.all()
-        context['users'] = get_user_model().objects.all()
-        return context
+        return Task.objects.all()
 
 
 class TaskCreateView(LoginCheckMixin,
+                     SuccessMessageMixin,
                      TemplateContextMixin,
                      CreateView):
     model = Task
@@ -47,6 +30,7 @@ class TaskCreateView(LoginCheckMixin,
     success_url = reverse_lazy('tasks')
     page_title = _("Create task")
     submit_button_text = _("Create")
+    success_message = _("Task successfully created")
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user

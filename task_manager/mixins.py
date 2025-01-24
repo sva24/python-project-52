@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
@@ -44,7 +45,6 @@ class TemplateContextMixin:
 
 
 class TaskOwnerCheckMixin:
-
     owner_field = None
 
     def get_permission_message(self):
@@ -59,3 +59,32 @@ class TaskOwnerCheckMixin:
             return redirect('tasks')
 
         return super().dispatch(request, *args, **kwargs)
+
+
+class DeleteProtectedObjectMixin:
+    protected_error_message = ''
+    protect_redirect = ''
+
+    def post(self, request, *args, **kwargs):
+        obj = self.get_object()
+        try:
+            obj.delete()
+        except ProtectedError:
+
+            messages.error(request, self.protected_error_message)
+            return redirect(self.protect_redirect)
+
+        return super().post(request, *args, **kwargs)
+
+
+class PreventLabelDeletionMixin:
+    deletion_protected_message = ''
+    protect_redirect_url = ''
+
+    def post(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.task_set.exists():
+            messages.error(request, self.deletion_protected_message)
+            return redirect(self.protect_redirect_url)
+
+        return super().post(request, *args, **kwargs)

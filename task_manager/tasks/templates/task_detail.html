@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% load i18n %}
+{% load django_bootstrap5 %}
 
-{% block title %}{% translate "Task Details" %}{% endblock %}
 
 {% block content %}
   <div class="container wrapper flex-grow-1">
@@ -16,7 +16,7 @@
         <hr>
         <div class="container">
           <div class="row p-1">
-            <div class="col">{% translate "Author" %}</div>
+            <div class="col">{% translate "Creator" %}</div>
             <div class="col">{{ task.created_by.username }}</div>
           </div>
           <div class="row p-1">

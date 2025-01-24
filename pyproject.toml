@@ -12,6 +12,7 @@ python-dotenv = "^1.0.1"
 dj-database-url = "^2.3.0"
 django-bootstrap5 = "^24.3"
 gunicorn = "^23.0.0"
+django-filter = "^24.3"
 
 
 [build-system]
