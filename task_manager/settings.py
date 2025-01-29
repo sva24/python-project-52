@@ -30,39 +30,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-class BaseConfig:
-    DEBUG = False
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
-
-
-class DevelopmentConfig(BaseConfig):
-    DEBUG = True
-
-
-class ProductionConfig(BaseConfig):
-    DATABASES = {
-        "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
-    }
-
-
-class ConfigFactory:
-    @staticmethod
-    def get_config():
-        environment = os.getenv("DJANGO_ENV", "development")
-
-        if environment == "production":
-            return ProductionConfig()
-        return DevelopmentConfig()
-
-
-config = ConfigFactory.get_config()
-
-DEBUG = config.DEBUG
+DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ["127.0.0.1", "webserver"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -120,8 +88,9 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-DATABASES = config.DATABASES
+DATABASES = {
+    "default": dj_database_url.config(os.getenv("DATABASE_URL"))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
