@@ -5,6 +5,7 @@ install:
 
 PORT ?= 8000
 run:
+	poetry run python manage.py migrate
 	poetry run gunicorn --bind 0.0.0.0:$(PORT) task_manager.wsgi
 
 dev:
