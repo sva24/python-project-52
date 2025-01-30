@@ -219,10 +219,8 @@ msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
 #: task_manager/tasks/views.py:49
-#, fuzzy
-#| msgid "Task successfully created"
 msgid "Task successfully updated"
-msgstr "Задача успешно создана"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/views.py:50
 msgid "Update task"
