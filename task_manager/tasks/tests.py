@@ -1,27 +1,8 @@
-import json
-
 import pytest
 from django.contrib.messages import get_messages
 from django.urls import reverse
 
-from task_manager.labels.tests import test_label
-from task_manager.statuses.tests import test_status
 from task_manager.tasks.models import Task
-from task_manager.users.tests import login, test_user
-
-
-@pytest.fixture
-def test_task(db, test_user, test_status, test_label):
-    with open("task_manager/fixtures/tasks.json", "r") as file:
-        task_data = json.load(file)[0]
-
-    task_data["status"] = test_status
-    task_data["created_by"] = test_user
-    task_data["executor"] = test_user
-
-    task = Task.objects.create(**task_data)
-    task.labels.add(test_label)
-    return task
 
 
 @pytest.mark.django_db

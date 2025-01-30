@@ -1,20 +1,8 @@
-import json
-
 import pytest
 from django.contrib.messages import get_messages
 from django.urls import reverse
 
 from task_manager.statuses.models import Status
-from task_manager.users.tests import login, test_user
-
-
-@pytest.fixture
-def test_status(db):
-    with open("task_manager/fixtures/statuses.json", "r") as file:
-        status_data = json.load(file)[0]
-
-    status = Status.objects.create(**status_data)
-    return status
 
 
 @pytest.mark.django_db

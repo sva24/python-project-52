@@ -5,8 +5,11 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DeleteView, ListView, UpdateView
 from django.views.generic.edit import CreateView
 
-from task_manager.mixins import (DeleteProtectedObjectMixin, LoginCheckMixin,
-                                 PermissionCheckMixin)
+from task_manager.mixins import (
+    DeleteProtectedObjectMixin,
+    LoginCheckMixin,
+    PermissionCheckMixin,
+)
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
