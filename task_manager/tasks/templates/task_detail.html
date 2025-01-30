@@ -17,13 +17,13 @@
         <div class="container">
           <div class="row p-1">
             <div class="col">{% translate "Creator" %}</div>
-            <div class="col">{{ task.created_by.username }}</div>
+            <div class="col">{{ task.created_by.first_name }} {{ task.created_by.last_name }}</div>
           </div>
           <div class="row p-1">
             <div class="col">{% translate "Executor" %}</div>
             <div class="col">
                 {% if task.executor %}
-                    {{ task.executor.username }}
+                    {{ task.executor.first_name }} {{ task.executor.last_name }}
                 {% else %}
                     None
                 {% endif %}
