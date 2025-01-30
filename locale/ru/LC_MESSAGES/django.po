@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-30 10:07+0700\n"
+"POT-Creation-Date: 2025-01-30 12:56+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,7 +248,7 @@ msgstr "Практические курсы по программировани�
 msgid "Find out more"
 msgstr "Узнать больше"
 
-#: task_manager/templates/index.html:9 task_manager/templates/navbar.html:4
+#: task_manager/templates/index.html:10 task_manager/templates/navbar.html:4
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
@@ -264,7 +264,6 @@ msgstr "Выход"
 
 #: task_manager/templates/navbar.html:24
 #: task_manager/users/templates/login.html:12
-#: task_manager/users/templates/login.html:19
 msgid "Login"
 msgstr "Вход"
 
@@ -276,6 +275,10 @@ msgstr "Регистрация"
 #: task_manager/users/templates/confirm_delete.html:8
 msgid "Deleting a user"
 msgstr "Удаление пользователя"
+
+#: task_manager/users/templates/login.html:19
+msgid "Log in"
+msgstr "Войти"
 
 #: task_manager/users/templates/show_users.html:15
 msgid "Username"
