@@ -104,7 +104,7 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 
 #: task_manager/mixins.py:24
 msgid "You do not have permission to change another user."
-msgstr "У вас нет разрешения на изменение другого пользователя"
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/mixins.py:51
 msgid "A task can only be deleted by its author"
