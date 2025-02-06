@@ -1,0 +1,26 @@
+
+services:
+  db:
+    image: postgres:latest
+    env_file:
+        - task_manager/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  web:
+    build: .
+    command: >
+      sh -c "poetry run python manage.py makemigrations &&
+             poetry run python manage.py migrate && 
+             poetry run gunicorn task_manager.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - task_manager/.env
+
+volumes:
+  postgres_data:
